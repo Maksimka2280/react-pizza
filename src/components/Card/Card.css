@@ -1,0 +1,86 @@
+.Card-container {
+    width: 350px;
+    height: 245px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 8px 8px 30px rgba(0, 0, 0, 0.3); 
+    cursor: pointer;
+}
+
+
+
+.price {
+    width: 70px;
+    height: 30px;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 19px;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.Rubl{
+    font-weight: 200;
+    color: var(--primary-color);
+    margin-left: 5px;
+}
+
+.number-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    
+}
+
+.rating {
+    width: 50px;
+    height: 30px;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    position: absolute;
+    margin-top: 130px;
+    margin-left: 10px;
+    box-shadow: 2px 2px 20px rgba(255, 165, 0, 0.1), -3px 3px 5px rgba(255, 165, 0, 0.2);
+    font-weight: 700;
+}
+
+
+.title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 2px;
+    margin-top: 20px;
+
+    
+}
+
+.description {
+    margin-top: 0;
+    color: rgb(126, 126, 126);
+    font-weight: 600;
+}
+
+.text-container--2 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+
+}
+
+.img-product {
+    width: 350px; 
+    height: 160px; 
+    border-radius: 20px; 
+    object-fit: cover; /
+}

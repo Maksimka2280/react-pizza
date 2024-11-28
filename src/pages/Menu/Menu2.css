@@ -1,0 +1,23 @@
+.text-navigation {
+    font-size: 45px;
+
+}
+
+.container-navigation {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.big-container__catalog {
+    padding: 20px 80px;
+    width: 100%;
+}
+
+.Card-pizza{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}

@@ -1,0 +1,34 @@
+.buttonaccent:hover {
+    background: var(--primary-color-hover);
+}
+
+.buttonaccent {
+    background: var(--primary-color);
+}
+
+.button {
+
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.25s;
+    font-size: 16px;
+    border: none;
+    color: var(--white-color);
+    border-radius: 29px;
+    font-style: normal;
+    font-weight: 400;
+
+}
+
+.spall {
+
+    font-size: 16px;
+    padding: 10px 25px;
+}
+
+.big {
+
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 20px 70px;
+}

@@ -1,0 +1,99 @@
+
+
+.menu-big__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 98vh;
+    padding: 40px;
+    width: 280px;
+    box-sizing: border-box;
+}
+
+.img-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 70px;
+    box-shadow: 0 0 70px 35px rgba(255, 255, 0, 0.2);
+}
+
+
+
+.user-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.layout-title {
+    margin-bottom: 0;
+}
+
+.layout-text {
+    margin-top: 4px;
+    color: var(--separator-color);
+}
+
+.icon-menu {
+    width: 30px;
+    height: 30px;
+}
+
+.cart-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+}
+
+.menu-container__mini {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 40px;
+ 
+}
+
+.text-menu {
+    font-size: 16px;
+    font-weight: 600;
+
+    color: var(--black);
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    margin-top: auto;
+    gap: 10px;
+}
+
+
+.vertical-line {
+    width: 1px;
+    background-color: var(--separator-color); 
+    height: 100%;
+    margin-left: 40px; 
+}
+
+.answer-container{
+    display: flex;
+   
+}
+
+.menu-container__mini.active .text-menu {
+    color: var(--primary-color); /* Change text color when active */
+}
+
+/* Alternatively, if you're using active-text class */
+.active-text {
+    color: var(--primary-color); /* Change text color when active */
+}
