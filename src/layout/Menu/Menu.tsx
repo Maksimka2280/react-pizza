@@ -5,7 +5,7 @@ import Button from "../../components/Button/Button";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RooState, typeAppDispatch } from "../../store/store";
-import { getProfile, userActions, userSlice } from "../../store/user.slice";
+import { getProfile, userActions } from "../../store/user.slice";
 
 
 
@@ -14,7 +14,7 @@ export function LAyout() {
     const navigate = useNavigate()
     const dispatch = useDispatch<typeAppDispatch>()
     const sprofile = useSelector((s: RooState) => s.user.profile)
-    const items = useSelector((s: RooState) => s.cart.items)
+
     const LogOut = () => {
         dispatch(userActions.logout())
         navigate('/auth/login')
@@ -68,7 +68,7 @@ export function LAyout() {
                             className={cn('icon-menu')}
                         />
                         <p className={cn('text-menu', { 'active-text': location.pathname === '/cart' })}>Корзина</p>
-                     {items.reduce((acc, items) => acc += items.count, 0)}
+            
                     </NavLink>
 
                 </div>

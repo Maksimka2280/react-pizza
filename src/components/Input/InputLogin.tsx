@@ -7,9 +7,11 @@ export interface InputProps {
     placeholder?: string;
     name: string;
     id: string;
+    value: string;
+    onChange: React.ChangeEventHandler<HTMLInputElement>;
   
   }
-  function InputLogin({  type, placeholder, name, id  }: InputProps) {
+  function InputLogin({  type, placeholder, name, id , value, onChange }: InputProps) {
     return (
       <input
   
@@ -18,7 +20,8 @@ export interface InputProps {
         placeholder={placeholder}
         name={name}
         id={id}
-       
+        value={value}
+        onChange={onChange}
       />
     );
   }

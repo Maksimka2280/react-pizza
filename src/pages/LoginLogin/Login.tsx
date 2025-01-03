@@ -1,91 +1,104 @@
+import React, { FormEvent, useEffect, useState } from 'react';
 import cn from 'classnames';
 import './Login.css';
 import InputLogin from '../../components/Input/InputLogin.tsx';
 import Button from '../../components/Button/Button.tsx';
-import { FormEvent, useEffect, useState } from 'react';
-import axios from 'axios';
-import { PREFIX } from '../../helpers/API.ts';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { typeAppDispatch } from '../../store/store.ts';
-import { login, userActions } from '../../store/user.slice.ts';
-import { Loginresponse } from '../../interfaces/auth.enterface.ts';
-
-export interface LoginForm {
-    email: {
-        value: string,
-    },
-    password: {
-        value: string,
-    }
-}
+import { login } from '../../store/user.slice.ts';
 
 function LoginPage() {
-
-    const [error, seterror] = useState<string | null>()
-    const navigate = useNavigate()
+    const [error, setError] = useState<string | null>(null);
+    const [useremail, setUseremail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState<{ useremail?: string; password?: string }>({});
+    const navigate = useNavigate();
     const dispatch = useDispatch<typeAppDispatch>();
-    const jwt = useSelector((s: RootState) => s.user.jwt);
+    const jwt = useSelector((s: RooState) => s.user.jwt);
+
+
     useEffect(() => {
         if (jwt) {
-            navigate('/')
+            navigate('/');
         }
-    }, [jwt, navigate])
+    }, [jwt, navigate]);
+
+    // Функция валидации полей
+    const validate = () => {
+        const errors: { useremail?: string; password?: string } = {};
+
+        if (!useremail.trim()) {
+            errors.useremail = 'Почта пользователя обязательна';
+        }
+        if (!password) {
+            errors.password = 'Пожалуйста, введите пароль';
+        }
+
+        return errors;
+    };
 
     const submit = (e: FormEvent) => {
         e.preventDefault();
-        seterror(null)
-        const target = e.target as typeof e.target & LoginForm;
-        const { email, password } = target;
-        sendLogin(email.value, password.value);
+        setError(null);
+
+        const validationErrors = validate();
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return; 
+        }
+        sendLogin(useremail, password);
     };
 
     const sendLogin = async (email: string, password: string) => {
-        dispatch(login({ email, password }));
-        // try { // в  axios все коды выше 200, 300, 400, обратываются как ошибки 
-        //     const { data } = await axios.post<Loginresponse>(`${PREFIX}/auth/login`, {
-        //         email,
-        //         password,
-        //     });
-        //     console.log('Login successful:', data);
-
-        //     dispatch(userActions.addJsw(data.access_token));
-        //     navigate('/');
-        // } catch (error) {
-
-        //     seterror(error.response?.data?.message);
-        // }
+        try {
+            await dispatch(login({ email, password }));
+            navigate('/'); 
+        } catch (err: any) {
+            setError(err.message || 'Ошибка входа. Попробуйте снова.');
+        }
     };
 
     return (
         <div className={cn('big-container')}>
             <div className={cn('two-container')}>
                 <form className={cn('login-container')} onSubmit={submit}>
-
                     <h1>Вход</h1>
+
+                    {/* Поле для email */}
                     <div className={cn('container-input')}>
-                        {error && <div className={cn('error-div')}>{error}</div>}
+                        {errors.useremail && <div className={cn('error-div')}>{errors.useremail}</div>}
                         <label htmlFor="email" className={cn('label-input')}>Ваш Email</label>
                         <InputLogin
                             type="email"
                             placeholder="Email"
                             name="email"
-                            id='email'
+                            id="email"
+                            value={useremail}
+                            onChange={(e) => setUseremail(e.target.value)}
                         />
                     </div>
+
+                 
                     <div className={cn('container-input2')}>
+                        {errors.password && <div className={cn('error-div')}>{errors.password}</div>}
                         <label htmlFor="password" className={cn('label-input')}>Ваш пароль</label>
                         <InputLogin
                             type="password"
                             placeholder="Password"
                             name="password"
-                            id='password'
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
-
                     </div>
+
+                    {error && <div className={cn('error-global')}>{error}</div>}
+
                     <div className={cn('button-container')}>
                         <Button type="submit" appersnce="big">Вход</Button>
                     </div>
+
                     <div className={cn('text-container')}>
                         <p className={cn('text-1')}>Нет аккаунта?</p>
                         <p className={cn('text-2')}>Зарегистрироваться</p>

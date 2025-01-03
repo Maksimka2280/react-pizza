@@ -6,6 +6,7 @@ import axios, { AxiosError } from 'axios';
 import { PREFIX } from '../../helpers/API.ts';
 import { Product } from '../../interfaces/product.interfsce.ts';
 import { useState, useEffect, ChangeEvent } from 'react';
+import { useDispatch } from "react-redux";
 
 
 export function Menu2() {
@@ -14,11 +15,13 @@ export function Menu2() {
   const [error, setError] = useState<string | undefined>();
   const [filter, setFilter] = useState<string>()
 
+ 
+
   const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFilter(e.target.value);
   };
   useEffect(() => {
-    getMenu()
+    getMenu(filter)
   }, [filter])
 
   const getMenu = async (name: string) => {
@@ -68,6 +71,7 @@ export function Menu2() {
             image={p.image}
           />
         ))}
+      
         {isLoading && <>Загружжаем продукты...</>}
       </div>
     </div>

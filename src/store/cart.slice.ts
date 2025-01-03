@@ -17,22 +17,11 @@ export const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
-        add: (state, action: PayloadAction<number>) => {
-           const existed = state.items.find( i => i.id === action.payload);
-
-           if(!existed){
-            state.items.push({ id: action.payload, count: 1 });
-           }
-           state.items.map(i => {
-            if(i.id === action.payload){
-                i.count++;
-            }
-            return i;
-           })
+        addItem: (state, action: PayloadAction<CartItem>) => {
+            state.items.push(action.payload);
         },
     },
 });
-
 
 export const cartActions = cartSlice.actions;
 export default cartSlice.reducer;

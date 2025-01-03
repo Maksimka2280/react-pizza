@@ -24,6 +24,10 @@
     font-weight: 600;
 }
 
+.mini-container{
+    display: flex;
+}
+
 .Rubl{
     font-weight: 200;
     color: var(--primary-color);
@@ -49,7 +53,7 @@
     font-size: 14px;
     font-weight: 600;
     position: absolute;
-    margin-top: 130px;
+    margin-top: 127px;
     margin-left: 10px;
     box-shadow: 2px 2px 20px rgba(255, 165, 0, 0.1), -3px 3px 5px rgba(255, 165, 0, 0.2);
     font-weight: 700;
@@ -82,5 +86,24 @@
     width: 350px; 
     height: 160px; 
     border-radius: 20px; 
-    object-fit: cover; /
+    object-fit: cover; 
+}
+
+.cart-button{
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    position: absolute;
+    border-radius: 50px;
+    border: none;
+    background-color: var(--primary-color);
+    cursor: cell;
+    box-shadow: 0 4px 13px rgba(254, 114, 76, 0.6);
+}
+
+
+.cart-button__container{
+    width: 320px;
+    display: flex;
+    justify-content: end;
 }

@@ -4,10 +4,12 @@ import { saveState } from "./storage.ts";
 import cartActions from "./Cart.slice";
 
 
+
 export const store = configureStore({
     reducer: {
        user: userSlice,
-       cart: cartActions
+       cart: cartActions,
+   
     }
 
 });
